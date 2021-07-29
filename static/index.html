@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API DEMO FOR SANYOK</title>
+    <script>
+        // const get_numbers = () => {
+        //     return new Promise((resolve, reject) => {
+        //         console.log('Before request')
+        //         fetch('/api/v1/numbers')
+        //         .then(r => {
+        //             return r.json()
+        //         })
+        //         .then( r => {
+        //             console.log('After request')
+        //             resolve(r)
+        //         })
+        //         .catch(err => {
+        //             reject(err)
+        //         })
+        //     })
+        // }
+
+        const get_numbers = async () => {
+            let r = await fetch('/api/v1/numbers')
+            r = await r.json()
+            return r
+        }
+
+        const run = async () => {
+            
+            try {
+                let result = await get_numbers()
+
+                if (result.result) {
+                    alert(result.data)
+                } else throw new Error(result.error)
+            } catch (err) {
+                alert(`Error: ${err}`)
+            }
+        }
+    </script>
+    
+</head>
+<body>
+    SANYOK THE COOLEST MAN
+    <button onclick="run()">run</button>
+</body>
+</html>
